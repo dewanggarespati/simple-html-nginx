@@ -4,5 +4,4 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: wahyukac0401/telstrapoc:latest
-      registry: DockerHub
+      tag: telstra-poc:${CICD_EXECUTION_SEQUENCE}
