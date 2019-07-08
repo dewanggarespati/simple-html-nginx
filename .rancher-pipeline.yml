@@ -5,4 +5,8 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: telstrapoc:latest
-      registry: index.docker.io
+      registry: 127.0.0.1:34115
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
