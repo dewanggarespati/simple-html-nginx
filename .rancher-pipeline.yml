@@ -5,4 +5,4 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: wahyukac0401/telstrapoc:latest
-      registry: index.docker.io
+      registry: DockerHub
