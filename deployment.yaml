@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-telstrapoc
+spec:
+  selector:
+    app: telstrapoc
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-telstrapoc
+  labels:
+    app: telstrapoc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telstrapoc
+  template:
+    metadata:
+      labels:
+        app: telstrapoc
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: telstrapoc
+        image: telstrapoc:latest
+        ports:
+        - containerPort: 80
